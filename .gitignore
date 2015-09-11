@@ -1,0 +1,6 @@
+_backup/
+_build/
+_examples/
+
+# ignore mac files
+.DS_Store

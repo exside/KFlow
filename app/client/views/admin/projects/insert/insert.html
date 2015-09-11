@@ -1,0 +1,172 @@
+<template name="AdminProjectsInsert">
+	<div class="page-container container" id="content">
+		<div class="row" id="title_row">
+			<div class="col-md-12">
+				<div id="page_menu" class="pull-right">
+				</div>
+			</div>
+		</div>
+		{{> AdminProjectsInsertInsertForm}}
+	</div>
+</template>
+
+<template name="AdminProjectsInsertInsertForm">
+	<div class="">
+		<h2 id="component-title">
+			Create Project
+		</h2>
+		<form id="form" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}		
+		
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<label for="name">
+					Name
+				</label>
+				<div class="input-div">
+					<input type="text" name="name" value="Projectname" class="form-control" autofocus="autofocus" required="required" data-type="string">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-owner">
+				<label for="owner">
+					Owner
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="owner" data-type="string">
+						<option value="">
+							(Select Owner)
+						</option>
+						{{#each admin_users}}
+						<option value="{{_id}}">
+							{{profile.name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-start">
+				<label for="start">
+					Start Date
+				</label>
+				<div class="input-div">
+					<div class="input-group date">
+						<input type="text" name="start" value="" class="form-control" data-type="date" data-format="DD.MM.YYYY">
+						<span class="input-group-addon">
+							<i class="fa fa-calendar">
+							</i>
+						</span>
+					</div>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-end">
+				<label for="end">
+					End Date
+				</label>
+				<div class="input-div">
+					<div class="input-group date">
+						<input type="text" name="end" value="" class="form-control" data-type="date" data-format="DD.MM.YYYY">
+						<span class="input-group-addon">
+							<i class="fa fa-calendar">
+							</i>
+						</span>
+					</div>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-description">
+				<label for="description">
+					Description
+				</label>
+				<div class="input-div">
+					<textarea class="form-control" name="description"></textarea>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-specifity">
+				<label for="specifity">
+					Specifity
+				</label>
+				<div class="input-div">
+					<input type="text" name="specifity" value="" class="form-control" data-type="integer" data-min="1" data-max="5">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-complexity">
+				<label for="complexity">
+					Transition Complexity
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="complexity" data-type="string">
+						<option value="low" selected>
+							Low
+						</option>
+						<option value="medium">
+							Medium
+						</option>
+						<option value="high">
+							High
+						</option>
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-resource">
+				<label for="resource">
+					Supportive Information
+				</label>
+				<div class="input-div">
+					<input type="text" name="resource" value="" class="form-control" data-type="string">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div">
+					<button id="form-submit-button" class="btn btn-success" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn btn-default">
+						Cancel
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

@@ -1,0 +1,134 @@
+<template name="AdminProjectsDetailsSequencedetails">
+	<div class="page-container container" id="content">
+		<div class="row" id="title_row">
+			<div class="col-md-12">
+				<div id="page_menu" class="pull-right">
+				</div>
+			</div>
+		</div>
+		{{> AdminProjectsDetailsSequencedetailsDetailsForm}}
+	</div>
+	<div id="subcontent">
+		{{> yield region='AdminProjectsDetailsSequencedetailsSubcontent'}}
+	</div>
+</template>
+
+<template name="AdminProjectsDetailsSequencedetailsDetailsForm">
+	<div class="">
+		<h2 id="component-title">
+			<a href="#" id="form-back-button" class="btn btn-default" title="back">
+				<span class="fa fa-chevron-left">
+				</span>
+			</a>
+			{{admin_sequence.name}} Details
+		</h2>
+		<form id="form" role="form" class="form-horizontal">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}		
+		
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<label for="name" class="col-sm-3 control-label">
+					Name
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{admin_sequence.name}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-order">
+				<label for="order" class="col-sm-3 control-label">
+					Order
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{admin_sequence.order}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-start">
+				<label for="start" class="col-sm-3 control-label">
+					Start Date
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{formatDate admin_sequence.start ''}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-end">
+				<label for="end" class="col-sm-3 control-label">
+					End Date
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{formatDate admin_sequence.end ''}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-userobj-profile-name">
+				<label for="userobj.profile.name" class="col-sm-3 control-label">
+					User
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{admin_sequence.userobj.profile.name}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-evaluationobj-name">
+				<label for="evaluationobj.name" class="col-sm-3 control-label">
+					Evaluation
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{admin_sequence.evaluationobj.name}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-resource">
+				<label for="resource" class="col-sm-3 control-label">
+					Supportive Information
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{admin_sequence.resource}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-rating">
+				<label for="rating" class="col-sm-3 control-label">
+					Rating
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{admin_sequence.rating}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-load">
+				<label for="load" class="col-sm-3 control-label">
+					CL Average
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{admin_sequence.load}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div col-sm-9 col-sm-offset-3">
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

@@ -1,0 +1,126 @@
+var pageSession = new ReactiveDict();
+
+Template.AdminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsert.rendered = function() {
+	
+};
+
+Template.AdminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsert.events({
+	
+});
+
+Template.AdminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsert.helpers({
+	
+});
+
+Template.AdminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertForm.rendered = function() {
+	
+
+	pageSession.set("adminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertFormInfoMessage", "");
+	pageSession.set("adminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertFormErrorMessage", "");
+
+	$(".input-group.date").each(function() {
+		var format = $(this).find("input[type='text']").attr("data-format");
+
+		if(format) {
+			format = format.toLowerCase();
+		}
+		else {
+			format = "mm/dd/yyyy";
+		}
+
+		$(this).datepicker({
+			autoclose: true,
+			todayHighlight: true,
+			todayBtn: true,
+			forceParse: false,
+			keyboardNavigation: false,
+			format: format
+		});
+	});
+
+	$("input[type='file']").fileinput();
+	$("select[data-role='tagsinput']").tagsinput();
+	$(".bootstrap-tagsinput").addClass("form-control");
+	$("input[autofocus]").focus();
+};
+
+Template.AdminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertForm.events({
+	"submit": function(e, t) {
+		e.preventDefault();
+		pageSession.set("adminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertFormInfoMessage", "");
+		pageSession.set("adminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertFormErrorMessage", "");
+
+		var self = this;
+
+		function submitAction(msg) {
+			var adminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertFormMode = "insert";
+			if(!t.find("#form-cancel-button")) {
+				switch(adminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertFormMode) {
+					case "insert": {
+						$(e.target)[0].reset();
+					}; break;
+
+					case "update": {
+						var message = msg || "Saved.";
+						pageSession.set("adminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertFormInfoMessage", message);
+					}; break;
+				}
+			}
+
+			Router.go("admin.evaluations.details.evaluationitemdetails", {evaluationId: self.params.evaluationId, evaluationitemId: self.params.evaluationitemId});
+		}
+
+		function errorAction(msg) {
+			msg = msg || "";
+			var message = msg.message || msg || "Error.";
+			pageSession.set("adminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertFormErrorMessage", message);
+		}
+
+		validateForm(
+			$(e.target),
+			function(fieldName, fieldValue) {
+
+			},
+			function(msg) {
+
+			},
+			function(values) {
+				values.evaluationId = self.params.evaluationId;
+				values.evaluationitemId = self.params.evaluationitemId;
+
+				newId = Evaluationitemoptions.insert(values, function(e) { if(e) errorAction(e); else submitAction(); });
+			}
+		);
+
+		return false;
+	},
+	"click #form-cancel-button": function(e, t) {
+		e.preventDefault();
+
+		
+
+		Router.go("admin.evaluations.details.evaluationitemdetails", {evaluationId: this.params.evaluationId, evaluationitemId: this.params.evaluationitemId});
+	},
+	"click #form-close-button": function(e, t) {
+		e.preventDefault();
+
+		/*CLOSE_REDIRECT*/
+	},
+	"click #form-back-button": function(e, t) {
+		e.preventDefault();
+
+		/*BACK_REDIRECT*/
+	}
+
+	
+});
+
+Template.AdminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertForm.helpers({
+	"infoMessage": function() {
+		return pageSession.get("adminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertFormInfoMessage");
+	},
+	"errorMessage": function() {
+		return pageSession.get("adminEvaluationsDetailsEvaluationitemdetailsEvaluationitemoptioninsertInsertFormErrorMessage");
+	}
+	
+});

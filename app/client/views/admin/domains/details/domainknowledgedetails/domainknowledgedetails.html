@@ -1,0 +1,84 @@
+<template name="AdminDomainsDetailsDomainknowledgedetails">
+	<div class="page-container container" id="content">
+		<div class="row" id="title_row">
+			<div class="col-md-12">
+				<div id="page_menu" class="pull-right">
+				</div>
+			</div>
+		</div>
+		{{> AdminDomainsDetailsDomainknowledgedetailsDetailsForm}}
+	</div>
+</template>
+
+<template name="AdminDomainsDetailsDomainknowledgedetailsDetailsForm">
+	<div class="">
+		<h2 id="component-title">
+			<a href="#" id="form-back-button" class="btn btn-default" title="back">
+				<span class="fa fa-chevron-left">
+				</span>
+			</a>
+			Knowledge Domain Entry
+		</h2>
+		<form id="form" role="form" class="form-horizontal">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}		
+		
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-value">
+				<label for="value" class="col-sm-3 control-label">
+					Value
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{admin_domainknowledge.value}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-type">
+				<label for="type" class="col-sm-3 control-label">
+					Knowledge Type
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{admin_domainknowledge.type}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-projectobj-name">
+				<label for="projectobj.name" class="col-sm-3 control-label">
+					Project
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{admin_domainknowledge.projectobj.name}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-userobj-profile-name">
+				<label for="userobj.profile.name" class="col-sm-3 control-label">
+					User
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{admin_domainknowledge.userobj.profile.name}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div col-sm-9 col-sm-offset-3">
+					<a href="#" id="form-close-button" class="btn btn-primary">
+						OK
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

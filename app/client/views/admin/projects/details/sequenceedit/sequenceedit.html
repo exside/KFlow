@@ -1,0 +1,179 @@
+<template name="AdminProjectsDetailsSequenceedit">
+	<div class="page-container container" id="content">
+		<div class="row" id="title_row">
+			<div class="col-md-12">
+				<div id="page_menu" class="pull-right">
+				</div>
+			</div>
+		</div>
+		{{> AdminProjectsDetailsSequenceeditEditForm}}
+	</div>
+</template>
+
+<template name="AdminProjectsDetailsSequenceeditEditForm">
+	<div class="">
+		<h2 id="component-title">
+			Edit Sequence
+		</h2>
+		<form id="form" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}		
+		
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<label for="name">
+					Name
+				</label>
+				<div class="input-div">
+					<input type="text" name="name" value="{{admin_sequence.name}}" class="form-control" autofocus="autofocus" required="required" data-type="string">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-order">
+				<label for="order">
+					Order
+				</label>
+				<div class="input-div">
+					<input type="text" name="order" value="{{admin_sequence.order}}" class="form-control" data-type="integer">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-start">
+				<label for="start">
+					Start Date
+				</label>
+				<div class="input-div">
+					<div class="input-group date">
+						<input type="text" name="start" value="{{formatDate admin_sequence.start ''}}" class="form-control" data-type="date">
+						<span class="input-group-addon">
+							<i class="fa fa-calendar">
+							</i>
+						</span>
+					</div>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-end">
+				<label for="end">
+					End Date
+				</label>
+				<div class="input-div">
+					<div class="input-group date">
+						<input type="text" name="end" value="{{formatDate admin_sequence.end ''}}" class="form-control" data-type="date">
+						<span class="input-group-addon">
+							<i class="fa fa-calendar">
+							</i>
+						</span>
+					</div>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-user">
+				<label for="user">
+					Assign to User
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="user" data-type="string">
+						<option value="" {{optionIsSelected admin_sequence.user ""}}>
+							(Select Users)
+						</option>
+						{{#each admin_users}}
+						<option value="{{_id}}" {{optionIsSelected ../admin_sequence.user _id}}>
+							{{profile.name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-evaluation">
+				<label for="evaluation">
+					Evaluation
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="evaluation" data-type="string">
+						<option value="" {{optionIsSelected admin_sequence.evaluation ""}}>
+							(Select Evaluation)
+						</option>
+						{{#each admin_evaluations}}
+						<option value="{{_id}}" {{optionIsSelected ../admin_sequence.evaluation _id}}>
+							{{name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-resource">
+				<label for="resource">
+					Supportive Information
+				</label>
+				<div class="input-div">
+					<input type="text" name="resource" value="{{admin_sequence.resource}}" class="form-control" data-type="string">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-rating">
+				<label for="rating">
+					Rating
+				</label>
+				<div class="input-div">
+					<p class="form-control-static">
+						{{admin_sequence.rating}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-load">
+				<label for="load">
+					CL Average
+				</label>
+				<div class="input-div">
+					<p class="form-control-static">
+						{{admin_sequence.load}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div">
+					<button id="form-submit-button" class="btn btn-success" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn btn-default">
+						Cancel
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+
